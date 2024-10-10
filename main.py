@@ -25,22 +25,6 @@ role = st.session_state.role
 
 logout_page = st.Page(logout, title="")
 settings = st.Page("settings.py", title="")
-request_1 = st.Page(
-    "request/request_1.py",
-    title="",
-    default=(role == "Requester"),
-)
-request_2 = st.Page(
-    "request/request_2.py", title=""
-)
-respond_1 = st.Page(
-    "respond/respond_1.py",
-    title="",
-    default=(role == "Responder"),
-)
-respond_2 = st.Page(
-    "respond/respond_2.py", title="",
-)
 admin_1 = st.Page(
     "admin/admin_1.py",
     title="",
@@ -49,17 +33,11 @@ admin_1 = st.Page(
 admin_2 = st.Page("admin/admin_2.py", title="")
 
 account_pages = [logout_page, settings]
-request_pages = [request_1, request_2]
-respond_pages = [respond_1, respond_2]
 admin_pages = [admin_1, admin_2]
 
 st.title("Request manager")
 
 page_dict = {}
-if st.session_state.role in ["Requester", "Admin"]:
-    page_dict["Request"] = request_pages
-if st.session_state.role in ["Responder", "Admin"]:
-    page_dict["Respond"] = respond_pages
 if st.session_state.role == "Admin":
     page_dict["Admin"] = admin_pages
 
